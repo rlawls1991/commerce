@@ -1,0 +1,6 @@
+package com.core.exception
+
+import com.core.ReportExceptionAbstract
+import com.core.ResponseCode
+
+class ReportHaveNotRequireParameterException : ReportExceptionAbstract(ResponseCode.HAVE_NOT_REQUIRE_PARAMETER)

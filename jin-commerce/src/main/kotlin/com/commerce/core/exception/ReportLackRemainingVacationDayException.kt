@@ -1,0 +1,6 @@
+package com.core.exception
+
+import com.core.ReportExceptionAbstract
+import com.core.ResponseCode
+
+class ReportLackRemainingVacationDayException : ReportExceptionAbstract(ResponseCode.LACK_REMAINING_VACATION_DAY)

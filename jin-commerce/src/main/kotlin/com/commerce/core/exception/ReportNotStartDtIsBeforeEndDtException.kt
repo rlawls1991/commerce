@@ -1,0 +1,6 @@
+package com.core.exception
+
+import com.core.ReportExceptionAbstract
+import com.core.ResponseCode
+
+class ReportNotStartDtIsBeforeEndDtException : ReportExceptionAbstract(ResponseCode.NOT_STARTDT_IS_BEFORE_ENDDT)
