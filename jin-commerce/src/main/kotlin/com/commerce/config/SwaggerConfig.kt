@@ -1,9 +1,7 @@
 package com.config
 
-import com.domain.vacation.Vacation
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.security.core.userdetails.User
 import springfox.documentation.builders.ApiInfoBuilder
 import springfox.documentation.builders.PathSelectors
 import springfox.documentation.builders.RequestHandlerSelectors
@@ -19,19 +17,19 @@ class SwaggerConfig {
     @Bean
     fun api(): Docket {
         return Docket(DocumentationType.SWAGGER_2)
-            .select()
-            .apis(RequestHandlerSelectors.basePackage("com"))
-            .paths(PathSelectors.any())
-            .build()
-            .ignoredParameterTypes(Vacation::class.java, User::class.java)
-            .apiInfo(apiInfo());
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com"))
+                .paths(PathSelectors.any())
+                .build()
+                //.ignoredParameterTypes(Vacation::class.java, User::class.java)
+                .apiInfo(apiInfo());
     }
 
     private fun apiInfo(): ApiInfo {
         return ApiInfoBuilder()
-            .title("Vacation")
-            .description("휴가기안 테스트 swagger")
-            .version("1.0")
-            .build()
+                .title("commerce")
+                .description("jin-커머스 swagger")
+                .version("1.0")
+                .build()
     }
 }

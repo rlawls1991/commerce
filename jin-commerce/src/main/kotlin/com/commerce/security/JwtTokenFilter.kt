@@ -1,6 +1,5 @@
 package com.security
 
-import com.service.UserDetailServiceImpl
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import org.springframework.beans.factory.annotation.Autowired
@@ -27,9 +26,9 @@ class JwtTokenFilter : OncePerRequestFilter() {
 
     @Throws(ServletException::class, IOException::class)
     override fun doFilterInternal(
-        request: HttpServletRequest,
-        response: HttpServletResponse,
-        filterChain: FilterChain
+            request: HttpServletRequest,
+            response: HttpServletResponse,
+            filterChain: FilterChain
     ) {
         val token = extractToken(request)
 
@@ -38,7 +37,7 @@ class JwtTokenFilter : OncePerRequestFilter() {
             val userDetails: UserDetails = userService.loadUserByUsername(claims.subject)
 
             val authentication = UsernamePasswordAuthenticationToken(
-                userDetails, null, userDetails.authorities
+                    userDetails, null, userDetails.authorities
             )
 
             SecurityContextHolder.getContext().authentication = authentication

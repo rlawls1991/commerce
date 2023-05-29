@@ -4,22 +4,28 @@ import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
-@Table(name = "tb_user")
+@Table(name = "user")
 data class User(
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val userNo: Long? = null, //`user_no` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '사용자 user_no',
 
-        val username: String,
+    val username: String, // `username` VARCHAR(20) NOT NULL COMMENT '유저이름',
 
-        val password: String,
+    val password: String, // `password` VARCHAR(50) NOT NULL COMMENT '비밀번호',
 
-        var remainingLeave: Double = 15.0,
+    var nickname: String, // `nickname` VARCHAR(30) NOT NULL DEFAULT '' COMMENT '유저 닉네임',
 
-        val regDt: LocalDate = LocalDate.now(),
+    var point: Int = 0, // `point` INT NOT NULL DEFAULT '0' COMMENT '남은 포인트',
 
-        var chgDt: LocalDate = LocalDate.now(),
+    val regDt: LocalDate = LocalDate.now(), // `chg_dt` DATETIME NOT NULL COMMENT '수정일시',
 
-        @Enumerated(EnumType.STRING)
-        var userRole: UserRole = UserRole.USER
-)
+    var chgDt: LocalDate = LocalDate.now(),
+
+    @Enumerated(EnumType.STRING)
+    var userRole: UserRole = UserRole.USER
+) {
+    fun updatePoint(point: Int) {
+        this.point += point
+    }
+}
